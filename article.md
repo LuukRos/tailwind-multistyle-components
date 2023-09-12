@@ -2,7 +2,7 @@
 
 ## Intro
 
-As you might - or might not, know by now, I'm pretty keen on Tailwind CSS. It's allowed me to quickly develop awesome UIs with ease and its ecosystem is extensive, consisting of plugins, ready-made UI libraries and great documentation. But what if you want work on a project that defined its own design system? Would Tailwind still be a valid option? This tutorial explores design systems and how to implement an advanced multistyle component using Tailwind CSS.
+As you might or might not know by now, I'm pretty keen on Tailwind CSS. It's allowed me to quickly develop awesome UIs with ease, and its ecosystem is extensive, consisting of plugins, ready-made UI libraries and great documentation. But what if you work on a project that implements its own design system? Would Tailwind still be a valid option? This tutorial explores design systems and how to implement an advanced multistyle component using Tailwind CSS.
 
 ## Design systems & Tailwind's utility classes
 
