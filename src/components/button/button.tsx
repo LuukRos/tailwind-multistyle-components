@@ -7,12 +7,19 @@ type ButtonProps = {
   size?: "sm" | "md" | "lg";
 };
 
+type ButtonPropsKey = string | undefined;
+
+type LookupObject<T extends ButtonPropsKey, U = string> = Record<
+  NonNullable<T>,
+  U
+>;
+
 const baseClasses =
   "font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:hover:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-400 active:translate-y-px";
 
-const toneClasses: Record<
-  NonNullable<ButtonProps["tone"]>,
-  Record<NonNullable<ButtonProps["impact"]>, string>
+const toneClasses: LookupObject<
+  ButtonProps["tone"],
+  LookupObject<ButtonProps["impact"]>
 > = {
   default: {
     bold: "bg-sky-500 text-white hover:bg-sky-600 focus-visible:ring-sky-500",
@@ -44,7 +51,7 @@ const toneClasses: Record<
   },
 };
 
-const shapeClasses: Record<NonNullable<ButtonProps["shape"]>, string> = {
+const shapeClasses: LookupObject<ButtonProps["shape"]> = {
   square: "rounded-none",
   rounded: "rounded",
   pill: "rounded-full",
