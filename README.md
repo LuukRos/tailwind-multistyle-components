@@ -1,6 +1,6 @@
 # Advanced multistyle components with Tailwind & TypeScript
 
-This is an example Vite + React + TypeScript project to implement an advanced generic and reusable button UI component using Tailwind CSS and TypeScript. This repository goes hand in hand with my written article, found [here](./article.md).
+This is an example Vite + React + TypeScript project to implement an advanced generic and reusable button UI component using Tailwind CSS and TypeScript. This repository goes hand in hand with my written article, found [here](./article.md). A live example can be found [here](https://tailwind-multistyle-components.vercel.app/).
 
 ## Running locally
 
