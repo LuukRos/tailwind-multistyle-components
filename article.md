@@ -48,7 +48,15 @@ We're almost there! Or actually.. We're almost ready to actually get started. We
 
 Now come two last optional steps. You don't have to follow along, but it gives you a cheeky little glimps into the awesome ecosystem that has developed around Tailwind.
 
-First, let's install Prettier and a neat little plugin into our codebase by running `npm install --save-dev prettier prettier-plugin-tailwindcss`. [Prettier](https://prettier.io/) is an opinionated code formatter that makes sure all our code looks neatly organised. The Tailwind CSS [plugin](https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier) for Prettier is an official plugin by the creators of Tailwind and automatically sorts classes based on their recommended class order. This allows you to get familiar with preferred positions of utility classes and makes it easier for you to find classes to adjust on the long term. It might seem overwhelming now, but stick to it and you'll be the Usain Bolt of writing Tailwind in no-time.
+First, let's install Prettier and a neat little plugin into our codebase by running `npm install --save-dev prettier prettier-plugin-tailwindcss`. You'll then have to add a `.prettierrc.json` file to your project's root directory and paste the below code in.
+
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
+[Prettier](https://prettier.io/) is an opinionated code formatter that makes sure all our code looks neatly organised. The Tailwind CSS [plugin](https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier) for Prettier is an official plugin by the creators of Tailwind and automatically sorts classes based on their recommended class order. This allows you to get familiar with preferred positions of utility classes and makes it easier for you to find classes to adjust on the long term. It might seem overwhelming now, but stick to it and you'll be the Usain Bolt of writing Tailwind in no-time.
 
 Second, make sure you install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension if you are using VS Code as your preferred IDE. It'll take your experience developing using Tailwind to the next level by providing you with featurs such as autocompletion, syntax highlighting and linting. We'll take this extension to the next level by altering the default settings ever so slightly. Open up your `settings.json` file and chuck this code snippet in there. I'm going to ask you to trust me on this one, as I'll elaborate on this once we actually need to.
 
