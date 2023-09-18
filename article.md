@@ -6,7 +6,7 @@ As you might or might not know by now, I'm pretty keen on Tailwind CSS. It's all
 
 ## Design systems & Tailwind's utility classes
 
-Design systems, by definition, are not just simple styleguides. They include technical specifications and guidelines, principles, documentation, processes and much more. It covers tangible products such as templates, layouts, interactions, UI components, colours, typography, icons, and illustrations. Design systems tend to cover a products entire ecosystem and aren't necessary limited to a single outlet of a product, such as a website or mobile application.
+Design systems, by definition, are not just simple styleguides. They include technical specifications and guidelines, principles, documentation, processes and much more. It covers tangible products such as templates, layouts, interactions, UI components, colours, typography, icons, and illustrations. Design systems tend to cover a product's entire ecosystem and aren't necessarily limited to a single outlet of a product, such as a website or mobile application.
 
 Tailwind CSS is a utility-first API for your design system. It provides an extensive amount of classes that help developers work within the constraints of elaborate design systems. Utilities cover things such as paddings and margins, colours, typography, pseudo-classes & -elements, and more.
 
@@ -17,10 +17,10 @@ So, let's learn how to create a generic and reusable multistyle component using 
 This part of the tutorial assumes a few things:
 
 - You are familiar with Tailwind CSS.
-- You are familiar with React. This tutorial focusses on a fairly simple component without any state management involved, though the general idea of this tutorial can be used in more advanced components.
+- You are familiar with React. This tutorial focuses on a fairly simple component without any state management involved, though the general idea of this tutorial can be used in more advanced components.
 - You are familiar with TypeScript. We'll be using some custom types, built-in utility types and generic types. This tutorial will in no way be a deep-dive and all concepts will be explained, but some basic knowledge is useful.
 
-We'll be using [Vite](https://vitejs.dev/) in this tutorial as our build tool. Vite leverages native ES modules and hot module replacement (HMR), allowing for an amazingly fast feedback loop during development. Contrary to tools like webpack, Vite doesn't necessary slow down the larger your application grows. However, given the scope of this tutorial, we do not really have to worry about performance optimisation that much.
+We'll be using [Vite](https://vitejs.dev/) in this tutorial as our build tool. Vite leverages native ES modules and hot module replacement (HMR), allowing for an amazingly fast feedback loop during development. Contrary to tools like webpack, Vite doesn't necessarily slow down the larger your application grows. However, given the scope of this tutorial, we do not really have to worry about performance optimisation that much.
 
 We can easily scaffold a Vite (with React and TypeScript) project by running `npm create vite@latest tailwind-multistyle-components -- --template react-ts` in your preferred Terminal. Depending on your version of npm, you might need to omit the first pair of `--`. This script will create a new Vite project folder in our current directory.
 
@@ -96,7 +96,7 @@ export const Button = ({ ...restProps }: React.ComponentProps<"button">) => {
 };
 ```
 
-We start of with a very basic `Button` component.
+We start off with a very basic `Button` component.
 
 This button does not necessarily accept any specific props yet, though we do spread `restProps` as one of our function's parameters. We then define the type for these `restProps` using a type native to React: `ComponentProps`.
 
@@ -115,9 +115,9 @@ We can use Tailwind utilities to make it more appealing and accessible, by provi
 />
 ```
 
-If you did decide to follow along with the _entire_ setup of our working environment you'll notice some cool things. Classes tell you exactly what CSS properties they apply when hovered over, they get sorted automatically, and you see a neat little preview when looking at colour utils.
+If you decided to follow along with the _entire_ setup of our working environment you'll notice some cool things. Classes tell you exactly what CSS properties they apply when hovered over, they get sorted automatically, and you see a neat little preview when looking at colour utils.
 
-Did you how we did not add the `className` to our `<Button>` component in `App.tsx`?
+Did you notice how we did not add the `className` to our `<Button>` component in `App.tsx`?
 
 While this is still a valid thing to do, it would kind of defeat the purpose of creating actual reusable components: we want to define the base for _every_ button in our application and not rewrite the same list of styles multiple times.
 
@@ -132,7 +132,7 @@ We can define the different 'flavours' of our `Button` component using React pro
 - shape
 - size
 
-```tsx
+```ts
 type ButtonProps = {
   tone?: "default" | "danger" | "warning" | "success";
   impact?: "bold" | "light" | "bordered";
@@ -182,7 +182,7 @@ To reiterate: we have a `<Button>` component that defines some base styles and a
 
 Implementing the different variants for our `Button` component may seem like a daunting task at first, but once you have one single variant 'flavour' up and running, the rest _should_ be a piece of cake.
 
-Let's start by focussing on the `size` property of our button. We can have a look at the base classes we defined earlier to determine what classes we could use or alter to make our button appear in different sizes.
+Let's start by focusing on the `size` property of our button. We can have a look at the base classes we defined earlier to determine what classes we could use or alter to make our button appear in different sizes.
 
 I'll give you a second to figure those classes out.
 
@@ -225,7 +225,7 @@ import clsx from 'clsx';
     sizeClasses[size],
   )}
   {...restProps}
-/>>
+/>
 ```
 
 You may notice something.
@@ -256,7 +256,7 @@ Assume that `isLarge` is `true`. We have two clashing classes: `p-4` and `p-8`. 
 
 Let's give tailwind-merge a try.
 
-First, start by cleaning up a little bit - remove clsx by running `npm uninstall clsx` and then install tailwind-merge by running `npm install --save tailwind-merge`. Replace our `clsx` import statement by `import { twMerge } from 'tailwind-merge` and replace the `clsx()` method in our `<button>` element with `twMerge()`.
+First, start by cleaning up a little bit - remove clsx by running `npm uninstall clsx` and then install tailwind-merge by running `npm install --save tailwind-merge`. Replace our `clsx` import statement by `import { twMerge } from 'tailwind-merge'` and replace the `clsx()` method in our `<button>` element with `twMerge()`.
 
 Easy peasy, lemon squeezy! 🍋
 
@@ -287,7 +287,7 @@ You'll notice a few things:
 
 We can start by abstracting `Record<NonNullable<..., string>` into its own generic type. This will allow us to reduce repetition ever so slightly and makes future refactors easier. Since we use a nested `Record` for our `tone` classes, we have to try and make a distinction between the two 'flavours' of values for our `Record` - either a `string` or another `Record`. I've opted to take this approach:
 
-```tsx
+```ts
 type ButtonPropsKey = string | undefined;
 
 type LookupObject<T extends ButtonPropsKey, U = string> = Record<
@@ -309,7 +309,7 @@ const shapeClasses: LookupObject<ButtonProps["shape"]> = {
 
 Simpler lookup objects just reference the type directly, while the nested `tone` and `impact` lookup object appears just slightly more complicated.
 
-```tsx
+```ts
 const toneClasses: LookupObject<
   ButtonProps["tone"],
   LookupObject<ButtonProps["impact"]>
