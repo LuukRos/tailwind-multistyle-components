@@ -18,4 +18,4 @@ npm run dev
 
 ## Questions and/or feedback
 
-I would be very happy to address any of your feedback or questions. Feel free to open an issue and I will try my best to get back to you ASAP.
+I would be very happy to address any of your feedback or questions. Feel free to open an issue and I will try my best to get back to you ASAP. 
